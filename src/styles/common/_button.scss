@@ -1,0 +1,65 @@
+@import 'utils/colors';
+
+@mixin button {
+  .button {
+    cursor: pointer;
+    display: flex;
+    flex: 1;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &.fill {
+      border-style: none;
+      &.positive {
+        background-color: $green;
+        color: $white;
+      }
+      &.primary {
+        background-color: $primary;
+        color: $white;
+      }
+      &.default {
+        background-color: $white;
+        color: $dark;
+      }
+    }
+
+    &.outline {
+      border-style: solid;
+      border-width: 1px;
+      background-color: $transparent;
+      &.positive {
+        border-color: $green;
+        color: $green;
+      }
+      &.primary {
+        border-color: $primary;
+        color: $primary;
+      }
+      &.default {
+        border-color: $gray;
+        color: $gray;
+      }
+    }
+
+    &.borderless {
+      border: none;
+      background-color: $transparent;
+
+      &.positive {
+        color: $green;
+      }
+      &.primary {
+        color: $primary;
+      }
+      &.default {
+        color: $gray;
+      }
+    }
+  }
+}

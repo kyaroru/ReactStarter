@@ -1,0 +1,49 @@
+@import 'common/text-input';
+@import 'common/button';
+@import 'utils/colors';
+
+body {
+  background-color: $white;
+  font-family: Arial, Helvetica, sans-serif;
+  @include text-input;
+  @include button;
+}
+
+button:focus, input:focus, select:focus {
+  outline: 0;
+}
+
+.loading {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #333;
+  opacity: 0.5;
+  z-index: 10;
+
+  .content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+  }
+}
+
+.form-container {
+  padding: 10px;
+
+  .form-field {
+    display: flex;
+    flex: 1;
+    margin-top: 10px;
+  }
+
+  .form-button {
+    display: flex;
+    flex: 1;
+    margin-top: 10px;
+  }
+}

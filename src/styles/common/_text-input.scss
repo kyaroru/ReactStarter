@@ -1,0 +1,56 @@
+@import 'utils/colors';
+
+@mixin text-input {
+  input:focus:not([readonly]) {
+    &.error {
+      border-bottom: 1px solid $red;
+      box-shadow: none;
+    }
+  }
+
+  .text-input {
+    width: 100%;
+
+    .input-container {
+      width: 100%;
+
+      .input {
+        width: 100%;
+        border-style: none;
+        border-bottom: 1px solid $primary;
+        background-color: $transparent;
+        color: $title;
+        margin-top: 3px;
+        padding: 5px 0px;
+
+        &.error {
+          border-bottom: 1px solid $red;
+        }
+      }
+
+      .icon-container {
+        width: 100%;
+        position: relative;
+        .icon {
+          position: absolute;
+          width: 18px;
+          right: 5px;
+          bottom: 3px;
+          text-align: center;
+          i {
+            color: $gray;
+            &.error {
+              color: $red;
+            }
+          }
+        }
+      }
+    }
+
+    .error-msg {
+      color: $red;
+      font-size: 0.8em;
+      padding-top: 3px;
+    }
+  }
+}
