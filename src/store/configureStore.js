@@ -35,9 +35,7 @@ if (ENV === 'development') {
 export const getStore = () => store;
 
 const configureStore = () => {
-  // store = createStore(reducers, {}, middlewares);
-  // return store;
-  const store = createStore(reducer, middlewares);
+  store = createStore(reducer, middlewares);
   sagaMiddleware.run(sagas);
   const persistor = persistStore(store);
 

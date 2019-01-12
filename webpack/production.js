@@ -8,6 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = BundleAnalyzer;
 
 module.exports = {
+  mode: 'production',
   devtool: 'cheap-module-source-map',
   entry: {
     app: [
@@ -18,8 +19,13 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: '[name].js',
-    chunkFilename: '[chunkhash].js',
+    chunkFilename: '[name].bundle.js',
     publicPath: './',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   resolve: {
     alias: {
@@ -46,10 +52,6 @@ module.exports = {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loader: 'url-loader?name=img/[hash].[ext]',
     }, {
-      test: /\.json/,
-      use: 'json-loader',
-      exclude: /node_modules/,
-    }, {
       test: /\.js$/,
       use: {
         loader: 'babel-loader',
@@ -62,20 +64,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
     // optimizations
     new CleanWebpackPlugin([path.join(__dirname, '../dist')], {
       root: process.cwd(),
       verbose: true,
       dry: false,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: ({ resource }) => /node_modules/.test(resource),
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
@@ -85,12 +78,6 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: '[name].css',
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      compress: {
-        warnings: false,
-      },
     }),
     new BundleAnalyzerPlugin({
       // Can be `server`, `static` or `disabled`.

@@ -2,7 +2,7 @@
 This is a starter app for ReactJS with some boilerplate code :p
 
 ## App Bundle
-- Webpack 3 ready (With development && production configs)
+- Webpack 4 ready (With development && production configs)
 - Bundle analyzer report will be generated upon build in `dist` folder (to visualize what is taking up bundle size)
 
 ## Redux
@@ -38,15 +38,15 @@ App.js // A simple login screen to demo whole redux flow (action > reducer > sag
 ## Installed Packages
 - Package Dependencies:
 ```
-  "prop-types": "^15.6.0",
-  "react": "^16.2.0",
-  "react-dom": "^16.2.0",
-  "react-redux": "^5.0.6",
-  "redux": "^3.7.2",
-  "redux-form": "^7.2.0",
+  "prop-types": "^15.6.2",
+  "react": "^16.7.0",
+  "react-dom": "^16.7.0",
+  "react-redux": "^6.0.0",
+  "redux": "^4.0.1",
+  "redux-form": "^8.1.0",
   "redux-logger": "^3.0.6",
-  "redux-persist": "^5.4.0",
-  "redux-saga": "^0.16.0"
+  "redux-persist": "^5.10.0",
+  "redux-saga": "^0.16.2"
 ```
 
 ## Demo

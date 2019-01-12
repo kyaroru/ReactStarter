@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   entry: {
     app: [
@@ -42,10 +42,6 @@ module.exports = {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loader: 'url-loader?name=img/[hash].[ext]',
     }, {
-      test: /\.json/,
-      use: 'json-loader',
-      exclude: /node_modules/,
-    }, {
       test: /\.js$/,
       use: {
         loader: 'babel-loader',
@@ -57,13 +53,6 @@ module.exports = {
     }],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-        PLATFORM_ENV: JSON.stringify('web'),
-      },
-    }),
-    new CleanWebpackPlugin([path.join(__dirname, '../dist')]),
     new HtmlWebpackPlugin({
       title: 'ReactStarter',
       template: path.join(__dirname, '../src/index.html'),
@@ -71,6 +60,5 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
